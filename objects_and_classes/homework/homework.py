@@ -1,8 +1,3 @@
-from constants import CARS_TYPES, CARS_PRODUCER, TOWNS, NAMES
-import random
-import uuid
-from itertools import count
-
 """
 Вам небхідно написати 3 класи. Колекціонери Гаражі та Автомобілі.
 Звязкок наступний один колекціонер може мати багато гаражів.
@@ -35,8 +30,8 @@ from itertools import count
     Якщо вільних місць немає повинне вивести повідомлення про це.
 
     Колекціонерів можна порівнювати за ціною всіх їх автомобілів.
-    
-    
+
+
     Гараж має наступні характеристики:
 
     town - одне з перечислениз значеннь в TOWNS
@@ -51,6 +46,12 @@ from itertools import count
     remove(cat) -> Забирає машину з гаражу.
     hit_hat() -> Вертає сумарну вартість всіх машин в гаражі
 """
+
+
+from constants import CARS_TYPES, CARS_PRODUCER, TOWNS, NAMES
+import random
+import uuid
+from itertools import count
 
 
 class Cesar:

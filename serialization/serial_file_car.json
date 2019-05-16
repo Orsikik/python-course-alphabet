@@ -1,0 +1,9 @@
+{
+    "__class__": "Car",
+    "__module__": "__main__",
+    "price": 2000.0,
+    "mileage": 10000.0,
+    "type": "London",
+    "producer": "Bugatti",
+    "number": "2730546053d4443693b6774faced07db"
+}
