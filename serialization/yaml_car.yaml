@@ -1,0 +1,8 @@
+!!python/object:__main__.Car
+mileage: 10000.0
+number: !!python/object:uuid.UUID
+  int: 52090833439075569095728742882872199131
+  is_safe: !!python/object/apply:uuid.SafeUUID [null]
+price: 2000.0
+producer: Bugatti
+type: London
