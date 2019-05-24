@@ -21,3 +21,6 @@ https://docs.python.org/3/library/logging.html
     filemode: If filename is given, the file is opened in this mode. The default is a, which means append.
     format: This is the format of the log message.
     
+## Useful links
+ 
+ https://www.toptal.com/python/in-depth-python-logging
