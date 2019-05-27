@@ -1,0 +1,5 @@
+INFO:root:New 3
+ERROR:root:An error has happened!
+DEBUG:root:This is a debug message
+INFO:root:New 3
+ERROR:root:An error has happened!
