@@ -1,0 +1,27 @@
+{
+    "__class__": "Cesar",
+    "__module__": "__main__",
+    "name": "Roman",
+    "garages": [
+        {
+            "__class__": "Garage",
+            "__module__": "__main__",
+            "places": 1,
+            "owner": "a674d4f383ba4804982d461e67a8def0",
+            "town": "Paris",
+            "cars": [
+                {
+                    "__class__": "Car",
+                    "__module__": "__main__",
+                    "price": 2000.0,
+                    "mileage": 10000.0,
+                    "type": "London",
+                    "producer": "Bugatti",
+                    "number": "2730546053d4443693b6774faced07db"
+                }
+            ],
+            "number": "7d7773d64337487bbf7b72b0647353e4"
+        }
+    ],
+    "register_id": "a674d4f383ba4804982d461e67a8def0"
+}

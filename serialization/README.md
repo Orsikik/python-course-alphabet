@@ -14,6 +14,8 @@
 ### Useful links
 
 https://medium.com/python-pandemonium/json-the-python-way-91aac95d4041
+https://python-scripts.com/json
+
 
 Коротке описанння способів збереження конфігів
 https://martin-thoma.com/configuration-files-in-python/

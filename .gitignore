@@ -10,5 +10,6 @@ venv
 virtualenv
 venv_db
 venv_psql
-venv_objcon
-venv_oop
+venv_objcon/
+venv_oop/
+
