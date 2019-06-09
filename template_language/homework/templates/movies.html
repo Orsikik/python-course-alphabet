@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1 class="my-5 py-5 text-center">Movies list</h1>
+    <div class="row">
+        {% for movie in  movies%}
+            {% if movie.year > '2010' %}
+                <div class="col-sm-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
+                                <a href="/{{ movie.title }}">
+                                    <img src="{{ movie.poster }}"
+                                         class="card-img" alt="{{ movie.title }}">
+                                </a>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="/{{ movie.title }}">{{ movie.title }}</a>
+                                    </h5>
+                                    <p class="card-text">
+                                        {{ movie.plot }}
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">{{ movie.year }},</small>
+                                        <small class="text-muted">{{ movie.director }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}
