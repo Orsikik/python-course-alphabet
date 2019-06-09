@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ index }}
+{% endblock %}
+
+{% block content_title %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <form method="POST" action="/{{ index }}/added">
+        <div class="input-group flex-nowrap">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="addon-wrapping">name</span>
+  </div>
+  <input type="text" name="name" class="form-control" placeholder="Insert name of the product" aria-label="Fruitname" aria-describedby="addon-wrapping">
+    </div>
+
+        <div class="input-group flex-nowrap">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="addon-wrapping">descr</span>
+  </div>
+  <input type="text" name="desc" class="form-control" placeholder="Describe your product" aria-label="Description" aria-describedby="addon-wrapping">
+    </div>
+
+    <div class="input-group flex-nowrap">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="addon-wrapping">picture</span>
+  </div>
+  <input type="text" name="pic" class="form-control" placeholder="Describe your product" aria-label="Picture" aria-describedby="addon-wrapping">
+    </div>
+    
+    <div align="center">
+        <input class="btn btn-success" type="submit"  value="Add">
+    </div>
+    </form>
+{% endblock %}

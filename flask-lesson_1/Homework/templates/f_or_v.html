@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ index }}
+{% endblock %}
+
+{% block content_title %}
+
+{% endblock %}
+
+
+{% block content %}
+    <a href="/{{ index }}/add"> <button type="button" class="btn btn-primary btn-lg">Add {{ index }}</button></a>
+    <a href="/{{ index }}/delete"> <button type="button" class="btn btn-secondary btn-lg">Delete {{ index }}</button></a>
+    <h1 class="my-5 py-5 text-center">{{ index.capitalize() }}</h1>
+    <div class="row">
+        {% for product in  content%}
+                <div class="col-sm-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
+                                    <img src="{{ product.picture }}"
+                                         class="card-img" alt="{{ product.name.capitalize() }}">
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{ product.name.capitalize() }}
+                                    </h5>
+                                    <p class="card-text">
+                                        {{ product.description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock %}
