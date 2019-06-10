@@ -14,17 +14,21 @@ def v_or_f(index):
     else:
         return abort(404)
 
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html')
+
 
 @app.route('/')
 def index():
     return render_template('main_page.html')
 
+
 @app.route('/<index>/add')
 def add(index):
     return render_template('add.html', index=index)
+
 
 @app.route('/<index>/added', methods=['GET', 'POST'])
 def added(index):
@@ -45,6 +49,7 @@ def added(index):
 @app.route('/<index>/delete')
 def del_item(index):
     return render_template('delete.html', index=index)
+
 
 @app.route('/<index>/deleted', methods=['POST'])
 def deleted(index):
