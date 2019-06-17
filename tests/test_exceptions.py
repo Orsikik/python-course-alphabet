@@ -12,6 +12,7 @@ class TestException(unittest.TestCase):
     def test_exception_raise(self):
         with self.assertRaises(ValueError) as context:
             division(10, 0)
+            print('Something')
         self.assertTrue("Second argument should not be zero" in context.exception.args)
 
     def test_valid_data(self):
@@ -23,3 +24,4 @@ class TestException(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

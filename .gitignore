@@ -2,6 +2,8 @@
 .pyc
 # IDE files
 .idea
+.log
+info.log
 __pycache__
 venv_psql
 
