@@ -12,7 +12,7 @@ app.register_blueprint(messenger)
 
 @app.route('/')
 def hello_world():
-    return 'Our first route'
+    return 'Our first route test '
 
 
 @app.route('/name/<int:index>')
@@ -85,7 +85,7 @@ def get_request_object():
 test_methods_dict = ["Value 1", "Value 2"]
 
 
-@app.route('/test_methods')
+@app.route('/ ')
 @app.route('/test_methods/<string:value>', methods=['GET', 'POST', 'DELETE'])
 def test_methods(value=None):
     if request.method == 'POST':
@@ -197,4 +197,4 @@ def test_session():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
