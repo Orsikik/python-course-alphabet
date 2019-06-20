@@ -2,8 +2,8 @@ from functools import wraps
 
 from flask import Flask, request
 from errors import errors
-from config import run_config
-from flask_restful import Api, Resource, reqparse, fields, marshal_with
+# from config import run_config
+# from flask_restful import Api, Resource, reqparse, fields, marshal_with
 
 app = Flask(__name__)
 api = Api(app, errors=errors)
