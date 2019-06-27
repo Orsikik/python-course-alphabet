@@ -1,7 +1,7 @@
 from flask import Flask
 from main import main
 from config import Configuration
-from flask_restful import Api, Resource, reqparse
+from flask_restful import Api, Resource, reqparse, fields, marshal_with
 from flask import request
 
 
@@ -10,7 +10,7 @@ app.config.from_object(Configuration)
 # app.register_blueprint(main)
 
 api = Api(app)
-parser_companies = reqparse.RequestParser()
+parser_companies = reqparse.RequestParser(bundle_errors=True)#bundle_errors позволяет получить все ошибки ( если у нас несколько add.arguments)
 parser_companies.add_argument('page', type=int, help='Wrong value')
 # аргументы  action='append'- добавляет значения одинаковых аргументов в словарь
 # для того, чтобы парсить аргументы с разных источников указываем локейшен:
@@ -56,8 +56,29 @@ class Companies(Resource):
         a.remove(value)
         return 'Successful'
 
+# создаем структуру обьекта, для передачи в качестве аргументов
+structure_fish = {
+    'name': fields.String(attribute='name for customer'), #указали атрибут для того, чтобы отобразить клиенту другое имя переменной
+    'size': fields.String
+}
+
+
+class Fish:
+    def __init__(self, name, size):
+        self.name = name
+        self.size = size
+
+
+class GetFish(Resource):
+    @marshal_with(structure_fish)
+    def get(self):
+        fish = Fish('Carp', '20cm')
+        return fish
+
+
 api.add_resource(RestTest, '/')
 api.add_resource(Companies, '/companies', '/companies/<value>')
+api.add_resource(GetFish, '/fish')
 
 
 if __name__ == '__main__':
