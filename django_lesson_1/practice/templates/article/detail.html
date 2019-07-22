@@ -1,0 +1,123 @@
+{% load static %}
+{% load article_tags %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<br>
+<h1>{{ article.title }}</h1>
+<p>Author: <strong>{{ article.author }}</strong></p>
+<br>
+{#<p> NEW Title: {% add_random_number article.title %}</p>#}
+
+{{ article.description | safe }}
+
+<br>
+{% for comment in p_comments %}
+
+    {{ comment.created }} <br>
+    <strong>{{ comment.text }}</strong><br>
+    {{ comment }} <br>
+    {% for nested_comment in nested_comments %}
+            <ul>
+            {% if nested_comment.parent_comment == comment %}
+            <li>{{ nested_comment }} {{ nested_comment.profile }} </li>
+            {% endif %}
+            </ul>
+    {% endfor %}
+            <form action="{{ object.get_absolute_url }}/new_comment" method="post">
+            {% csrf_token %}
+            <label for="article"></label>
+            <input id="article" type="hidden" name="article" value="{{ article.id }}"><br>
+            <label for="profile">Left your comment: </label>
+            <input id="profile" type="hidden" name="profile" value="{{ user.pk }}"><br>
+            <input style="background-color: darkgray" type="text"  value="{{ user.username }}"><br>
+            <input id="parent_comment" type="hidden" name="parent_comment" value="{{ comment.id }}">
+            <label for="text">Comment: </label>
+            <input id="comment" type="text" name="t" value="" placeholder="Comment"><br>
+            <button type="submit" name="com_on_com">Submit</button><br>
+            </form><br>
+
+{% endfor %}
+
+{% if p_comments.has_previous %}
+    <a href="?page=1"><<</a>
+    <a href="?page={{ p_comments.previous_page_number }}"><</a>
+{% endif %}
+
+{% for num in p_comments.paginator.page_range %}
+
+    {% if p_comments.number == num %}
+        <strong>{{ num }}</strong>
+
+    {% elif num > p_comments.number|add:-3 and num < p_comments.number|add:3  %}
+        <a href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+
+{% endfor %}
+
+{% if p_comments.has_next %}
+    <a href="?page={{ p_comments.next_page_number }}">></a>
+    <a href="?page={{ p_comments.paginator.num_pages }}">>></a>
+{% endif %}
+<br>
+<br>
+
+{% if user.is_authenticated %}
+
+        <form action="{{ object.get_absolute_url }}" method="post">
+        {% csrf_token %}
+            <label for="article"></label>
+            <input id="article" type="hidden" name="article" value="{{ article.id }}"><br>
+            <label for="profile">Your name: </label>
+            <input id="profile" type="hidden" name="profile" value="{{ user.pk }}"><br>
+            <input style="background-color: darkgray" type="text"  value="{{ user.username }}"><br>
+            <label for="email">Email: </label>
+            <input id="email" type="email" name="email" value="" placeholder="Enter your email here"><br>
+            <label for="text">Comment: </label>
+            <input id="text" type="text" name="text" value="" placeholder="Comment"><br>
+        <button type="submit" name="comments">Submit</button><br>
+        </form><br>
+
+
+
+
+{% else %}
+    To left a comments please log in or sign up <br>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+
+
+
+
+
+
+
+{#{{ p_comments.number }}#}
+{#{{ p_comments.paginator.count }}#}
+{#{{ p_comments.paginator.num_pages }}#}
+{#{{ p_comments.paginator.page_range }}#}
+
+<br>
+<br>
+{#<a href="{% url 'update' article.id %}">Update</a>#}
+{#<a href="{% url 'delete' article.id %}">Delete</a>#}
+
+
+{#    <form action="" method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Submit</button>#}
+{#    </form>#}
+
+
+{#{% elif num > p_comments.number|add:-3 and n < p_comments.number|add:3  %}#}
